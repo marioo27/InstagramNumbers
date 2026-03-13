@@ -4,8 +4,21 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.Set;
 
+/**
+ * Clase principal que muestra un menu por consola
+ * para analizar relaciones de seguidores de Instagram.
+ *
+ * @author Mario Garcia
+ * @version 1.0
+ * @since 1.0
+ */
 public class Main {
 
+    /**
+     * Punto de entrada de la aplicacion.
+     *
+     * @param args argumentos de linea de comandos (no utilizados)
+     */
     public static void main(String[] args) {
 
         String followingPath = "following.json";
