@@ -1,6 +1,6 @@
 # Instagram Numbers
 
-Aplicacion de consola en Java que analiza los ficheros JSON exportados de Instagram para mostrar seguidores mutuos, gente que te sigue y no sigues, y gente que sigues y no te sigue.
+Aplicacion Web Scrapping en Java que analiza los ficheros JSON exportados de Instagram para mostrar seguidores mutuos, gente que te sigue y no sigues, y gente que sigues y no te sigue.
 
 ## Requisitos
 
