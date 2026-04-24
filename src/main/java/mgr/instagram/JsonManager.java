@@ -9,14 +9,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Clase que gestiona la carga y el analisis de ficheros JSON
- * exportados desde Instagram para obtener informacion de seguidores
- * y seguidos.
+ * Class that manages the loading and analysis of JSON files
+ * exported from Instagram to obtain information about followers
+ * and following.
  *
- * Lee los ficheros following.json y followers_1.json y calcula:
- * - Usuarios que me siguen y no sigo.
- * - Usuarios con seguimiento mutuo.
- * - Usuarios a los que sigo y no me siguen.
+ * It reads the following.json and followers_1.json files and calculates:
+ * - Users who follow me and I do not follow.
+ * - Users with mutual following.
+ * - Users I follow and who do not follow me back.
  *
  * @author Mario Garcia
  * @version 1.0
@@ -32,10 +32,10 @@ public class JsonManager {
     private Set<String> followers;
 
     /**
-     * Crea una nueva instancia de JsonManager con las rutas a los ficheros JSON.
+     * Creates a new JsonManager instance with the paths to the JSON files.
      *
-     * @param followingPath ruta al fichero following.json
-     * @param followersPath ruta al fichero followers_1.json
+     * @param followingPath path to the following.json file
+     * @param followersPath path to the followers_1.json file
      */
     public JsonManager(String followingPath, String followersPath) {
         this.mapper = new ObjectMapper();
@@ -44,9 +44,9 @@ public class JsonManager {
     }
 
     /**
-     * Carga los datos de los ficheros JSON en memoria.
+     * Loads the data from the JSON files into memory.
      *
-     * @throws IOException si ocurre un error al leer los ficheros
+     * @throws IOException if an error occurs while reading the files
      */
     public void loadData() throws IOException {
         this.following = loadFollowing();
@@ -54,9 +54,9 @@ public class JsonManager {
     }
 
     /**
-     * Obtiene los usuarios que me siguen y a los que yo no sigo.
+     * Gets the users who follow me and whom I do not follow back.
      *
-     * @return conjunto de nombres de usuario que me siguen y no sigo de vuelta
+     * @return set of usernames who follow me and I do not follow back
      */
     public Set<String> getFollowersNoFollowBack() {
         checkLoaded();
@@ -66,9 +66,9 @@ public class JsonManager {
     }
 
     /**
-     * Obtiene los usuarios con los que existe seguimiento mutuo.
+     * Gets the users with mutual following.
      *
-     * @return conjunto de nombres de usuario con seguimiento mutuo
+     * @return set of usernames with mutual following
      */
     public Set<String> getMutualFollowers() {
         checkLoaded();
@@ -78,9 +78,9 @@ public class JsonManager {
     }
 
     /**
-     * Obtiene los usuarios a los que sigo y que no me siguen de vuelta.
+     * Gets the users I follow who do not follow me back.
      *
-     * @return conjunto de nombres de usuario que sigo y no me siguen
+     * @return set of usernames I follow and who do not follow me back
      */
     public Set<String> getFollowingNoFollowBack() {
         checkLoaded();
@@ -90,21 +90,21 @@ public class JsonManager {
     }
 
     /**
-     * Comprueba que los datos han sido cargados correctamente.
+     * Checks that the data has been loaded correctly.
      *
-     * @throws IllegalStateException si los datos no han sido cargados
+     * @throws IllegalStateException if the data has not been loaded
      */
     private void checkLoaded() {
         if (following == null || followers == null) {
-            throw new IllegalStateException("Los datos no estan cargados. Llama primero a loadData().");
+            throw new IllegalStateException("Data is not loaded. Call loadData() first.");
         }
     }
 
     /**
-     * Carga desde following.json el conjunto de usuarios a los que sigo.
+     * Loads from following.json the set of users I follow.
      *
-     * @return conjunto de nombres de usuario seguidos
-     * @throws IOException si ocurre un error al leer el fichero
+     * @return set of followed usernames
+     * @throws IOException if an error occurs while reading the file
      */
     private Set<String> loadFollowing() throws IOException {
         JsonNode root = mapper.readTree(new File(followingPath));
@@ -127,10 +127,10 @@ public class JsonManager {
     }
 
     /**
-     * Carga desde followers_1.json el conjunto de usuarios que me siguen.
+     * Loads from followers_1.json the set of users who follow me.
      *
-     * @return conjunto de nombres de usuario seguidores
-     * @throws IOException si ocurre un error al leer el fichero
+     * @return set of follower usernames
+     * @throws IOException if an error occurs while reading the file
      */
     private Set<String> loadFollowers() throws IOException {
         JsonNode array = mapper.readTree(new File(followersPath));

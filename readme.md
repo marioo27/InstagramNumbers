@@ -1,37 +1,39 @@
 # Instagram Numbers
 
-Aplicacion de consola en Java que analiza los ficheros JSON exportados de Instagram para mostrar seguidores mutuos, gente que te sigue y no sigues, y gente que sigues y no te sigue.
+Console Java application that analyzes Instagram-exported JSON files to show mutual followers, users who follow you but you don't follow back, and users you follow who don't follow you back.
+
 
 ## Requisitos
 
-- Java 17 o superior
+- Java 17 o higher
 - Maven
 
-### 📥 Cómo obtener tus ficheros JSON de Instagram
+### 📥 How to Get Your Instagram JSON Files
 
-1. Ve a **Instagram** → **Tu perfil** → **Menú (≡)** → ***Tus datos de Instagram***
-2. Selecciona ***Solicitar descarga*** → ***JSON***
-3. Recibirás un **email** con enlace de descarga (1-48h)
-4. Descarga el ZIP y descomprimelo, abre las carpetas **connections** → **followers_and_following** copia estos 2 ficheros a la raíz del proyecto:
+1. Go to **Instagram** → **Your profile** → **Menu (≡)** → ***Your Instagram Data***
+2. Select ***Request Download*** → ***JSON***
+3. You will receive an **email** with a download link (0-48h)
+4. Download the ZIP, extract it, navigate to **connections** → **followers_and_following**, and copy these 2 files to the project root:
    - `following.json`
    - `followers_1.json`
 
-## Estructura de ficheros esperada
+## Expected File Structure
 
-En la misma carpeta donde se ejecuta el programa deben existir estos ficheros:
+These files must be in the same folder where you run the program:
 
-- `following.json`: contiene el objeto `relationships_following` con los usuarios a los que sigues.
-- `followers_1.json`: contiene un array con los usuarios que te siguen.
 
-Estos ficheros se obtienen de la exportacion de datos de Instagram mencionada en el apartado anterior.
+- `following.json`: contains a `relationships_following` object with users you follow.
+- `followers_1.json`: contains an array with users who follow you.
 
-## Compilacion y ejecucion
+These files come from the Instagram data export described in the previous section.
+
+## Compilation and Execution
 
 ```bash
 mvn clean package
 ````
 
-## 📁 Estructura del Proyecto
+## 📁 Project Structure
 ```bash
 src
 ├───main

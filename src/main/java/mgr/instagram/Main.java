@@ -5,8 +5,8 @@ import java.util.Scanner;
 import java.util.Set;
 
 /**
- * Clase principal que muestra un menu por consola
- * para analizar relaciones de seguidores de Instagram.
+ * Main class that displays a console menu
+ * to analyze Instagram follower relationships.
  *
  * @author Mario Garcia
  * @version 1.0
@@ -15,9 +15,9 @@ import java.util.Set;
 public class Main {
 
     /**
-     * Punto de entrada de la aplicacion.
+     * Application entry point.
      *
-     * @param args argumentos de linea de comandos (no utilizados)
+     * @param args command line arguments (not used)
      */
     public static void main(String[] args) {
 
@@ -29,53 +29,53 @@ public class Main {
         try {
             manager.loadData();
         } catch (IOException e) {
-            System.err.println("Error cargando los ficheros JSON: " + e.getMessage());
+            System.err.println("Error loading JSON files: " + e.getMessage());
             return;
         }
 
         Scanner sc = new Scanner(System.in);
-        int opcion;
+        int option;
 
         do {
-            System.out.println("===== MENU INSTAGRAM =====");
-            System.out.println("1. Ver quien me sigue y NO sigo de vuelta");
-            System.out.println("2. Ver quien me sigue y yo tambien sigo (mutuos)");
-            System.out.println("3. Ver a quien sigo y NO me sigue de vuelta");
-            System.out.println("0. Salir");
-            System.out.print("Elige una opcion: ");
+            System.out.println("===== INSTAGRAM MENU =====");
+            System.out.println("1. See who follows me and I DON'T follow back");
+            System.out.println("2. See mutual followers");
+            System.out.println("3. See who I follow and DOESN'T follow me back");
+            System.out.println("0. Exit");
+            System.out.print("Choose an option: ");
 
             while (!sc.hasNextInt()) {
-                System.out.print("Opcion no valida. Introduce un numero: ");
+                System.out.print("Invalid option. Enter a number: ");
                 sc.next();
             }
-            opcion = sc.nextInt();
+            option = sc.nextInt();
 
-            switch (opcion) {
+            switch (option) {
                 case 1 -> {
                     Set<String> list = manager.getFollowersNoFollowBack();
-                    System.out.println("=== Me siguen y NO les sigo de vuelta ===");
+                    System.out.println("=== They follow me and I DON'T follow back ===");
                     list.forEach(System.out::println);
                     System.out.println("Total: " + list.size());
                 }
                 case 2 -> {
                     Set<String> list = manager.getMutualFollowers();
-                    System.out.println("=== Seguimiento mutuo ===");
+                    System.out.println("=== Mutual followers ===");
                     list.forEach(System.out::println);
                     System.out.println("Total: " + list.size());
                 }
                 case 3 -> {
                     Set<String> list = manager.getFollowingNoFollowBack();
-                    System.out.println("=== Sigo y NO me siguen de vuelta ===");
+                    System.out.println("=== I follow them and they DON'T follow back ===");
                     list.forEach(System.out::println);
                     System.out.println("Total: " + list.size());
                 }
-                case 0 -> System.out.println("Saliendo...");
-                default -> System.out.println("Opcion no valida.");
+                case 0 -> System.out.println("Exiting...");
+                default -> System.out.println("Invalid option.");
             }
 
             System.out.println();
 
-        } while (opcion != 0);
+        } while (option != 0);
 
         sc.close();
     }
