@@ -1,6 +1,6 @@
 # Instagram Numbers
 
-Web Scraping Application in Java that analyzes Instagram-exported JSON files to show mutual followers, people who follow you but you don't follow back, and people you follow who don't follow you back.
+Web Scraping Application in Java that analyzes Instagram-exported JSON files to show mutual followers, users who follow you but you don't follow back, and users you follow who don't follow you back.
 
 ## Requirements
 
